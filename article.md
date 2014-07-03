@@ -13,10 +13,10 @@ If you'd like to know about Scaldi integration in detail, visit the official doc
 
 http://skinny-framework.org/documentation/dependency-injection.html
 
-### Don't use in Scala 2.10.x
+### Don't use Scaldi in Scala 2.10.x
 <hr/>
 
-This is an important notice. Due to [SI-6240](https://issues.scala-lang.org/browse/SI-6240), Scaldi doesn't work fine in Scala 2.10.x. Use Scala 2.11.
+This is an important notice. Unfortunately, Scaldi doesn't work fine in Scala 2.10.x due to [SI-6240](https://issues.scala-lang.org/browse/SI-6240). Use Scala 2.11.
 
 https://github.com/scaldi/scaldi/issues/16
 
@@ -55,7 +55,7 @@ Before trying this example, set AWS credentials.
 
 First, you need to do the following things.
 
- - Create a trait as an interface and the default implmentation class (or just a class is also fine)
+ - Create a trait as an interface and the default implementation class (or just a class is also fine)
  - Create a class which extends scaldi.Module trait
  - Add module definitions to application.conf
  - Use injected components in controllers
@@ -73,7 +73,6 @@ First, you need to do the following things.
     package model
     import awscala._, s3._
     class AWSClientImpl extends AWSClient {
-      // https://github.com/seratch/AWScala
       implicit val s3 = S3()
       override def s3Buckets: Seq[awscala.s3.Bucket] = s3.buckets
     }
@@ -131,21 +130,21 @@ First, you need to do the following things.
     <hr/>
     <p>
     Your first Skinny app works!
+    </p>
     
     #for (bucket <- buckets)
       <p>${toJSONString(bucket)}</p>
     #end
-    </p>
 
 Your S3 buckets should be shown at localhost:8080.
 
 ### For SkinnyEnv.Test
 <hr/>
 
-To replace components when testing, you need to prepare as follows.
+To replace components when running tests, you need to prepare additional ones as follows.
 
- - Add Scaldi module for testing
- - Add mock implementation and bind it to the Scaldi module
+ - Create a Scaldi module for testing
+ - Cteate a mock implementation and bind it to the Scaldi module
  - Add the module to application.conf in test env
 
 #### src/test/scala/model/AWSClientMockImpl.scala
@@ -171,7 +170,7 @@ Be aware that this class is placed under “src/test/scala”.
 
 #### src/main/resources/application.conf
 
-Add scaldi modulces to test env settings.
+Add Scaldi modules to test env settings.
 
     development {
       scaldi {
@@ -186,17 +185,17 @@ Add scaldi modulces to test env settings.
 
 OK, let's run `./skinny test`. 
 
-You don't need real AWS configuration and payment for each test execution :-)
+You don't need real AWS configuration and payment for each test execution anymore :-)
 
 ### Conclusion
 <hr/>
 
-Scaldi is a very useful library. If you're familiar with dependency injection pattern, try it out with Skinny Framework.
+Of course, Scala is a so powerful language that you can inject dependencies without libraries (just create a trait and override some APIs). 
+
+However, using Scaldi looks so easy-to-use and elegant. If you're familiar with dependency injection pattern (especially in Java), try it out with Skinny Framework.
 
 The example in the article is here:
 
 https://github.com/skinny-framework/skinny-scaldi-example
 
 Enjoy!
-
-

@@ -10,6 +10,7 @@ class RootController_IntegrationTestSpec extends ScalatraFlatSpec with SkinnyTes
   it should "show top page" in {
     get("/") {
       status should equal(200)
+      body.contains("{&quot;name&quot;:&quot;foo&quot;,&quot;name&quot;:&quot;foo&quot;}") should equal(true)
     }
   }
 

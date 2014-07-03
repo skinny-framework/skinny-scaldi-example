@@ -9,6 +9,7 @@ import skinny.filter._
  * see also "http://skinny-framework.org/documentation/controller-and-routes.html"
  */
 trait ApplicationController extends SkinnyController
+    with skinny.controller.feature.ScaldiFeature
     // with TxPerRequestFilter
     // with SkinnySessionFilter
     with ErrorPageFilter {

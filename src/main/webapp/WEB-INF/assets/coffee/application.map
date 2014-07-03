@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "application.js",
+  "sourceRoot": "",
+  "sources": [
+    "application.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,EAAA,OAAO,CAAC,GAAR,CAAY,QAAZ,CAAA,CAAA;AAAA"
+}

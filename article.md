@@ -7,11 +7,18 @@ http://scaldi.org/
 
 >Scaldi provides simple and elegant way to do dependency injection in Scala. By using expressive power of the Scala language it defines intuitive and idiomatic DSL for binding and injecting dependencies.
 
-Since Skinny Framework 1.1.5, you can use it seamlessly with Skinny apps. This article will show you a small but pragmatic example.
+Since Skinny Framework 1.1.5, you can use it seamlessly with Skinny apps. This article shows you a small but pragmatic example.
 
-See in detail about Scaldi integration here:
+If you'd like to know about Scaldi integration in detail, visit the official docmentation:
 
 http://skinny-framework.org/documentation/dependency-injection.html
+
+### Don't use in Scala 2.10.x
+<hr/>
+
+This is an important notice. Due to [SI-6240](https://issues.scala-lang.org/browse/SI-6240), Scaldi doesn't work fine in Scala 2.10.x. Use Scala 2.11.
+
+https://github.com/scaldi/scaldi/issues/16
 
 ### Getting started with Skinny
 <hr/>
@@ -29,10 +36,10 @@ Access localhost:8080 from your browser. Now your first Skinny app works!
 ### Add skinny-scaldi library
 <hr/>
 
-Skinny's Scaldi integration adaptor is an optional library. Add the following to libraryDependency. 
+Skinny's Scaldi integration adaptor is an optional library. Add the following to libraryDependencies. 
 
     "org.skinny-framework"    %% "skinny-scaldi"       % skinnyVersion,
-    "com.github.seratch"      %% "awscala"             % "0.2.5",
+    "com.github.seratch"      %% "awscala"             % "0.2.+",
 
 The example in this article also uses AWScala which is a simple wrapper of AWS Java SDK.
 
@@ -46,10 +53,10 @@ Before trying this example, set AWS credentials.
 ### For SkinnyEnv.Development
 <hr/>
 
-First, you should create following things.
+First, you need to do the following things.
 
- - trait as an interface and the default implmentation class (or just a class is also fine)
- - a class which extends scaldi.Module trait
+ - Create a trait as an interface and the default implmentation class (or just a class is also fine)
+ - Create a class which extends scaldi.Module trait
  - Add module definitions to application.conf
  - Use injected components in controllers
 
@@ -66,6 +73,7 @@ First, you should create following things.
     package model
     import awscala._, s3._
     class AWSClientImpl extends AWSClient {
+      // https://github.com/seratch/AWScala
       implicit val s3 = S3()
       override def s3Buckets: Seq[awscala.s3.Bucket] = s3.buckets
     }
@@ -134,9 +142,9 @@ Your S3 buckets should be shown at localhost:8080.
 ### For SkinnyEnv.Test
 <hr/>
 
-To replace components when testing, you should prepare following things.
+To replace components when testing, you need to prepare as follows.
 
- - Scaldi module for testing
+ - Add Scaldi module for testing
  - Add mock implementation and bind it to the Scaldi module
  - Add the module to application.conf in test env
 

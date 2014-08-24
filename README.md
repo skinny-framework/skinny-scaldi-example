@@ -1,5 +1,7 @@
 ## Scaldi integration example
 
+[![Build Status](https://travis-ci.org/skinny-framework/skinny-scaldi-example.svg)](https://travis-ci.org/skinny-framework/skinny-scaldi-example)
+
 This is a sample application which shows how to integrate Scaldi with Skinny Framework.
 
 Scaldi is a simple and elegant DI library in Scala.

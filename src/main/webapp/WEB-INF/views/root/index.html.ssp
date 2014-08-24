@@ -1,10 +1,8 @@
 <%@val buckets: Seq[awscala.s3.Bucket] = Nil %>
 <%import skinny.util.JSONStringOps._ %>
-<h3>Hello World!</h3>
+<h3>Your S3 Buckets</h3>
 <hr/>
 <p>
-Your first Skinny app works!
-
 #for (bucket <- buckets)
   <p>${toJSONString(bucket)}</p>
 #end

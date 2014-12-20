@@ -1,8 +1,8 @@
 language: scala
-scala:
-  - 2.11.2
-jdk:
-  - oraclejdk8
-script:
-  - ./skinny test
-  
+scala: 2.11.4
+jdk: oraclejdk8
+script: "./skinny test:coverage"
+after_success: sbt coveralls
+env:
+  global:
+    secure: ifG6B0kOUcbW8n2NfRNPnj1CrEr1BIPfNlQkOxfGFIXEzJG4zzwj3FsRUYW78tO6KccdQc7j1KJ/fnWV8om3L6eNVeRNmJBoKBSJbGAFyE+0KVkK4RvWYYq6l8GMG3knyTaUer107ZzIyEuwxSCOxeE71WhQeCEiNO2w8MOQhKM=

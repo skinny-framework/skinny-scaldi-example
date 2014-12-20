@@ -1,6 +1,7 @@
 ## Scaldi integration example
 
 [![Build Status](https://travis-ci.org/skinny-framework/skinny-scaldi-example.svg)](https://travis-ci.org/skinny-framework/skinny-scaldi-example)
+[![Coverage Status](https://coveralls.io/repos/skinny-framework/skinny-scaldi-example/badge.png?branch=master)](https://coveralls.io/r/skinny-framework/skinny-scaldi-example?branch=master)
 
 This is a sample application which shows how to integrate Scaldi with Skinny Framework.
 

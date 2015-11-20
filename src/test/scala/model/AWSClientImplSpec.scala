@@ -13,4 +13,3 @@ class AWSClientImplSpec extends FunSpec with Matchers {
   }
 
 }
-

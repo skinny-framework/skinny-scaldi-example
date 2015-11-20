@@ -11,4 +11,3 @@ class AppModuleSpec extends FunSpec with Matchers {
   }
 
 }
-

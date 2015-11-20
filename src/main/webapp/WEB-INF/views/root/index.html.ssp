@@ -1,5 +1,5 @@
 <%@val buckets: Seq[awscala.s3.Bucket] = Nil %>
-<%import skinny.util.JSONStringOps._ %>
+<%import skinny.json4s.JSONStringOps._ %>
 <h3>Your S3 Buckets</h3>
 <hr/>
 <p>
